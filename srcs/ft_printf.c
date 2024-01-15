@@ -56,7 +56,6 @@ static int	specifier(const char *s, va_list args, int len)
 int	ft_printf(const char *s, ...)
 {
 	va_list	args;
-	int		is_cap;
 	int		len;
 
 	va_start(args, s);
@@ -75,5 +74,6 @@ int	ft_printf(const char *s, ...)
 		}
 		s++;
 	}
+	va_end(args);
 	return (len);
 }

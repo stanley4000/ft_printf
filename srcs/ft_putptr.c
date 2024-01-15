@@ -6,7 +6,7 @@
 /*   By: skoehn-h <skoehn-h@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 16:19:36 by skoehn-h          #+#    #+#             */
-/*   Updated: 2023/12/13 16:19:36 by skoehn-h         ###   ########.fr       */
+/*   Updated: 2024/01/08 16:24:29 by skoehn-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ static int	putptr_hex(unsigned long long n, int len)
 		len = putptr_hex(n / 16, len);
 		len = putptr_hex(n % 16, len);
 	}
+	return (len);
 }
 
 int	ft_putptr(void *ptr, int len)
@@ -41,6 +42,8 @@ int	ft_putptr(void *ptr, int len)
 	unsigned long long	n;
 
 	n = (unsigned long long) ptr;
+	if (n == 0)
+		return (ft_putstr("(nil)", len));
 	len = ft_putstr("0x", len);
 	len = putptr_hex(n, len);
 	return (len);
